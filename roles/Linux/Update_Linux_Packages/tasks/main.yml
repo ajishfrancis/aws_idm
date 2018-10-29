@@ -1,0 +1,20 @@
+---
+- name: Install the packages on RHEL
+  yum:
+   name: "{{ item }}"
+   state: present
+  with_items:
+    - python
+    - curl
+    - sed
+  when: ansible_os_family == "RedHat"
+
+- name: Install the packages on SUSE
+  zypper:
+    name: "{{ item }}"
+    state: present
+  with_items: 
+     - python
+     - curl
+     - sed
+  when: ansible_os_family == "Suse" 

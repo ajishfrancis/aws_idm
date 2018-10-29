@@ -1,0 +1,19 @@
+---
+# tasks file for Remove_Users in windows
+# author: Ajish Chovallur
+# initial Release
+
+- name: copy the powershell script
+  win_copy:
+     src: account_configuration.ps1
+     dest: c:\
+
+- name: execute the script on wwindows
+  win_shell: C:\account_configuration.ps1
+
+- name: remove the script
+  win_file: 
+    path: C:\account_configuration.ps1
+    state: absent
+ 
+    

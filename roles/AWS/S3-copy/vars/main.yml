@@ -1,0 +1,7 @@
+---
+# vars file for S3-copy
+
+# initial work : Ajish
+
+aws_region: eu-west-1
+platform: dev

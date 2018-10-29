@@ -1,0 +1,11 @@
+---
+# vars file for Remove_Users
+# author : ajish chovallur
+# initial release
+
+win:
+  - { user: "ankit", password: "Atos@123456789" }
+  - { user: "thijs", password: "Atos@123456789" }     
+
+  
+

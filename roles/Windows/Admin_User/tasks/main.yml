@@ -1,0 +1,28 @@
+---
+# tasks file for creating user and adding to administrator group  in windows
+# author: Ajish Chovallur
+# initial Release
+
+#- name: Ensure the User exist
+#  win_user:
+#      name: "{{username}}"
+#      state: query
+#      groups:
+#         - Users
+#  register: userinfo
+#- debug: msg="{{ userinfo }}"
+
+#- name: setting the facts
+#  set_fact:
+#      Userstate: "{{ userinfo.state }}"
+
+- name: Create the user and add it to admin group, if user doesnt exist
+  win_user: 
+     name: "{{ item.user }}"
+     password: "{{ item.password }}"
+     state: present
+     groups:
+       - Users
+       - Administrators
+  with_items: "{{ win }}"
+#  when: Userstate == "absent"

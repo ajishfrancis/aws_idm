@@ -1,0 +1,17 @@
+--- 
+
+- hosts: localhost
+  connection: local
+  become: yes
+  roles:
+    - AWS/S3-copy
+
+
+#  tasks:
+#   - ec2_instance_facts:
+#       profile: AnsibleEC2Role
+#       filters:
+#         "tag:Name": EC2EUW1ANSTEST
+#       region: eu-west-1        
+#     register: ec2_instance_facts   
+

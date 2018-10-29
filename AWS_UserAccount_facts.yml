@@ -1,0 +1,8 @@
+--- 
+
+- hosts: localhost
+  connection: local
+  tasks:
+   - aws_caller_facts:        
+     register: ec2_instance_facts   
+

@@ -1,0 +1,25 @@
+---
+# tasks file for Remove_Users in windows
+# author: Ajish Chovallur
+# initial Release
+
+- name: Ensure the User exist
+  win_user:
+      name: "{{username}}"
+      state: query
+      groups:
+         - Users
+  register: userinfo
+- debug: msg="{{ userinfo }}"
+
+- name: setting the facts
+  set_fact:
+      Userstate: "{{ userinfo.state }}"
+
+- name: Remove the Admin User,if it exist
+  win_user:
+     name: "{{ username }}"
+     state: absent
+     groups:
+       - Users
+  when: Userstate == "present"

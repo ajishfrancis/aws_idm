@@ -1,0 +1,27 @@
+---
+
+# initial author : Ajish Chovallur
+
+
+- name: make the directory to store the environment files
+  file: 
+    path: /home/ec2-user/S3files/environment/{{aws_region}}      
+    state: directory
+
+
+- name: Fetch the environment python file
+  s3:
+    bucket: s3-{{aws_region}}-mpc-configuration-mgmt-{{platform}}
+    object: /environment/create-environment.py
+    dest: /home/ec2-user/S3files/environment/create-environment.py
+    mode: get
+  register: s3value
+
+
+- name: Fetch the environment json file from the S3 bucket of region {{aws_region}}
+  s3:
+    bucket: s3-{{aws_region}}-mpc-configuration-mgmt-{{platform}}
+    object: /environment/{{aws_region}}/environments.json
+    dest: /home/ec2-user/S3files/environment/{{aws_region}}/environments.json
+    mode: get
+  register: s3_value
